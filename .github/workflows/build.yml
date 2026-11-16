@@ -25,15 +25,11 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build APK & App Bundle
-        run: |
-          flutter build apk --release --no-pub
-          flutter build appbundle --release --no-pub
+      - name: Build APK
+        run: flutter build apk --debug
 
-      - name: Upload APK & AAB
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: tacho-releases
-          path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/bundle/release/app-release.aab
+          name: tacho-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
